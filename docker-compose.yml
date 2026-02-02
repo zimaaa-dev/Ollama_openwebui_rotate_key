@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  ollama-cloud-gateway:
+    build: .
+    container_name: ollama-cloud-gateway
+    ports:
+      - "11435:11435"
+    volumes:
+      - ./config:/app/config
+    environment:
+      - OLLAMA_BASE_URL=https://api.ollama.com
+    restart: unless-stopped
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:latest
+    container_name: open-webui
+    ports:
+      - "3000:8080"
+    volumes:
+      - openwebui_data:/app/backend/data
+    environment:
+      - OLLAMA_BASE_URL=http://ollama-cloud-gateway:11435
+    restart: unless-stopped
+    depends_on:
+      - ollama-cloud-gateway
+
+volumes:
+  openwebui_data:
+
+networks:
+  default:
+    driver: bridge

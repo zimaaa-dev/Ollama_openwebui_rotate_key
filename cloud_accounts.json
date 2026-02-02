@@ -1,0 +1,19 @@
+{
+  "accounts": [
+    {
+      "name": "ollama-account-1",
+      "api_key": "ollama_xxx_your_api_key_1",
+      "description": "Primary account"
+    },
+    {
+      "name": "ollama-account-2",
+      "api_key": "ollama_xxx_your_api_key_2",
+      "description": "Backup account 1"
+    },
+    {
+      "name": "ollama-account-3",
+      "api_key": "ollama_xxx_your_api_key_3",
+      "description": "Backup account 2"
+    }
+  ]
+}
